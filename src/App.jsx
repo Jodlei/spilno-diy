@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ThemeProvider } from "styled-components";
+import { Route, Routes } from "react-router-dom";
+import { GlobalStyle } from "./Components/GlobalStyle/GlobalStyle";
+import { theme } from "./theme/theme";
+import { lazy } from "react";
+import styled from "styled-components";
+import Container from "../src/Components/ui/Container/Container.styled";
+
+const Programs = lazy(() => import("../src/pages/Programs/Programs"));
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <main>
+        <Wrapper>
+          <Container>
+            <Routes>
+              <Route index path="/" element={<Programs />} />
+              <Route path="/programs/:id">
+                <Route path={"progress"}></Route>
+              </Route>
+            </Routes>
+          </Container>
+        </Wrapper>
+      </main>
+    </ThemeProvider>
+  );
 }
 
-export default App
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+`;
+
+export default App;
