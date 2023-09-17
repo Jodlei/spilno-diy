@@ -1,8 +1,22 @@
-# React + Vite
+# On this site you can find many training programs that will help you stay in good physical shape.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Install the dependencies:
 
-Currently, two official plugins are available:
+```
+npm install
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+
+## To run the project in development mode, run the following command:
+
+```
+npm run dev
+
+```
+
+## To create a project build that you can deploy on the server, run the command:
+
+```
+npm run build
+
+```
