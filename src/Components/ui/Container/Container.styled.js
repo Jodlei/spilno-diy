@@ -5,6 +5,7 @@ const Container = styled.div`
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 60px;
+  padding-bottom: 30px;
   margin: 0 auto;
 `;
 export default Container;

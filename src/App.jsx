@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 export default App;

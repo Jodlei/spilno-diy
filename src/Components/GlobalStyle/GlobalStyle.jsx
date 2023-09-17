@@ -42,6 +42,7 @@ background-color: ${(p) => p.theme.colors.mainBackground};
 margin: 0;
 font-family: 'Poppins', sans-serif;
 
+
 * {
   transition: color 500ms cubic-bezier(0.075, 0.82, 0.165, 1), background-color: 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
