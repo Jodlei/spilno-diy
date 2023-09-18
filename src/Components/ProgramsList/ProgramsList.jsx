@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import Program from "../Program/Program";
+import { Link } from "react-router-dom";
 import { Wrap, List, ListItem } from "./ProgramsList.styled";
 
 const data = [

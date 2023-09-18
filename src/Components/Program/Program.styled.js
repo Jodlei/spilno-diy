@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Wrap = styled.div`
   width: 100%;
-  height: 228px;
   padding: 10px;
   border-radius: 8px;
   background-color: #f0eded;

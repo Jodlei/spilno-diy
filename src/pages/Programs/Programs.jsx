@@ -7,8 +7,11 @@ const Programs = () => {
   return (
     <>
       <ProgramsTitle />
+
       <DaysOfWeeksProgress />
+
       <AllActivity />
+
       <ProgramsList />
     </>
   );

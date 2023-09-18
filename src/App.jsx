@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { GlobalStyle } from "./Components/GlobalStyle/GlobalStyle";
 import { theme } from "./theme/theme";
 import { lazy } from "react";
-import styled from "styled-components";
 import Container from "../src/Components/ui/Container/Container.styled";
 import ProgramDetail from "./pages/ProgramDetails/ProgramDetails";
 
@@ -14,26 +13,17 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <main>
-        <Wrapper>
-          <Container>
-            <Routes>
-              <Route index path="/" element={<Programs />} />
-              <Route path="/programs/:id" element={<ProgramDetail />}>
-                <Route path={"progress"}></Route>
-              </Route>
-            </Routes>
-          </Container>
-        </Wrapper>
+        <Container>
+          <Routes>
+            <Route index path="/" element={<Programs />} />
+            <Route path="/programs/:id" element={<ProgramDetail />}>
+              <Route path={"progress"}></Route>
+            </Route>
+          </Routes>
+        </Container>
       </main>
     </ThemeProvider>
   );
 }
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  min-height: 100vh;
-`;
 
 export default App;

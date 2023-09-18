@@ -3,11 +3,11 @@ import { Description, Image, Title, Wrap } from "./AllProgramInfo.styled";
 import LinearProgressBar from "../../Components/ui/LinearProgressBar/LinearProgressBar";
 
 const AllProgramInfo = ({ programInfo }) => {
-  const { title, difficulty, intensity, coordinating, description, img } =
+  const { title, difficulty, intensity, coordinating, description, wideImg } =
     programInfo;
   return (
     <Wrap>
-      <Image src={img} />
+      <Image src={wideImg} />
 
       <Title>{title}</Title>
 
