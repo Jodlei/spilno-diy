@@ -176,7 +176,9 @@ const ProgramDetails = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
 
-  const currentProgram = data.find((item) => (item.id = id));
+  const toNumberId = +id;
+
+  const currentProgram = data.find((item) => item.id === toNumberId);
 
   return (
     <>
