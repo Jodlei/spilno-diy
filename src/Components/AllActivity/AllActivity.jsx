@@ -7,6 +7,7 @@ import {
 } from "./AllActivity.styled";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { Link } from "react-router-dom";
 
 const AllActivity = () => {
   const data = {
@@ -34,8 +35,10 @@ const AllActivity = () => {
       </CircleProgressWrap>
 
       <ActivityWrap>
-        <ActivityTitle>Активність</ActivityTitle>
-        <NumberOfExercises>{data.allExercice} вправи</NumberOfExercises>
+        <Link to={`/activities`}>
+          <ActivityTitle>Активність</ActivityTitle>
+          <NumberOfExercises>{data.allExercice} вправи</NumberOfExercises>
+        </Link>
       </ActivityWrap>
     </Wrap>
   );

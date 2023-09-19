@@ -5,6 +5,7 @@ import { theme } from "./theme/theme";
 import { lazy } from "react";
 import Container from "../src/Components/ui/Container/Container.styled";
 import ProgramDetail from "./pages/ProgramDetails/ProgramDetails";
+import Activities from "./pages/Activities/Activities";
 
 const Programs = lazy(() => import("../src/pages/Programs/Programs"));
 
@@ -16,9 +17,8 @@ function App() {
         <Container>
           <Routes>
             <Route index path="/" element={<Programs />} />
-            <Route path="/programs/:id" element={<ProgramDetail />}>
-              <Route path={"progress"}></Route>
-            </Route>
+            <Route path="/programs/:id" element={<ProgramDetail />} />
+            <Route path={"activities"} element={<Activities />} />
           </Routes>
         </Container>
       </main>

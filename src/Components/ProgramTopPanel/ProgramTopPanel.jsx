@@ -7,9 +7,7 @@ const ProgramTopPanel = ({ BackTo, id }) => {
     <Wrap>
       <BackButton to={BackTo} />
 
-      <ActivityLink to={`/programs/${id}/progress`}>
-        Моя активність
-      </ActivityLink>
+      <ActivityLink to={`/activities`}>Моя активність</ActivityLink>
     </Wrap>
   );
 };

@@ -5,6 +5,7 @@ import {
   Image,
   Description,
   Count,
+  Button,
 } from "./ExersciceItem.styled";
 
 const ExerciceItem = ({ title, img, description, repetitionCount }) => {
@@ -14,6 +15,7 @@ const ExerciceItem = ({ title, img, description, repetitionCount }) => {
       <Image src={img} />
       <Description>{description}</Description>
       <Count>Кількість повторювань - {repetitionCount}</Count>
+      <Button>Виконати</Button>
     </ListItem>
   );
 };
