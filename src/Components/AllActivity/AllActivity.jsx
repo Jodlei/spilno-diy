@@ -24,8 +24,6 @@ const AllActivity = () => {
           strokeWidth={15}
           styles={buildStyles({
             textSize: "15px",
-
-            // Colors
             pathColor: `rgba(86, 217, 138, 1)`,
             textColor: `#101828`,
             trailColor: `rgba(214, 241, 225, 1)`,
@@ -37,6 +35,7 @@ const AllActivity = () => {
       <ActivityWrap>
         <Link to={`/activities`}>
           <ActivityTitle>Активність</ActivityTitle>
+
           <NumberOfExercises>{data.allExercice} вправи</NumberOfExercises>
         </Link>
       </ActivityWrap>

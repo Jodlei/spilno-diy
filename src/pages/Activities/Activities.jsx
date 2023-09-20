@@ -1,7 +1,9 @@
+import ActivitiesTopPanel from "../../Components/ActivitiesTopPanel/ActivitiesTopPanel";
+
 const Activities = () => {
   return (
     <>
-      <p>123</p>
+      <ActivitiesTopPanel />
     </>
   );
 };

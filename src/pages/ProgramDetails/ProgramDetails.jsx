@@ -194,7 +194,7 @@ const ProgramDetails = () => {
 
   return (
     <>
-      <ProgramTopPanel BackTo={backLinkHref} id={id} />
+      <ProgramTopPanel BackTo={backLinkHref} />
 
       <AllProgramInfo programInfo={currentProgram} />
 
