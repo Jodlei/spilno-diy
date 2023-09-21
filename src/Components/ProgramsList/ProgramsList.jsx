@@ -1,83 +1,33 @@
+import React, { useState, useEffect } from "react";
 import Program from "../Program/Program";
 import { Link } from "react-router-dom";
 import { Wrap, List, ListItem } from "./ProgramsList.styled";
+import {getFitnessProgram} from "../../store/actions/fitness_programs.js";
+import { connect } from "react-redux";
 
-const data = [
-  {
-    id: 1,
-    title: "Програма 1",
-    difficulty: 100,
-    intensity: 15,
-    coordinating: 22,
-    description:
-      "Протезування являє собою важливий етап процесу соціально-трудової реабілітації людини, яка втратила кінцівки, або страждає захворюваннями опорно-рухового апарату",
-    img: "https://res.cloudinary.com/ddem4litw/image/upload/v1694901927/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B0_1_1_wsh9y6.jpg",
-  },
-  {
-    id: 2,
-    title: "Програма 2",
-    difficulty: 32,
-    intensity: 10,
-    coordinating: 22,
-    description:
-      "Протезування являє собою важливий етап процесу соціально-трудової реабілітації людини, яка втратила кінцівки, або страждає захворюваннями опорно-рухового апарату",
-    img: "https://res.cloudinary.com/ddem4litw/image/upload/v1694901927/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B0_1_1_wsh9y6.jpg",
-  },
-  {
-    id: 3,
-    title: "Програма 3",
-    difficulty: 78,
-    intensity: 44,
-    coordinating: 22,
-    description:
-      "Протезування являє собою важливий етап процесу соціально-трудової реабілітації людини, яка втратила кінцівки, або страждає захворюваннями опорно-рухового апарату",
-    img: "https://res.cloudinary.com/ddem4litw/image/upload/v1694901927/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B0_1_1_wsh9y6.jpg",
-  },
-  {
-    id: 4,
-    title: "Програма 4",
-    difficulty: 66,
-    intensity: 77,
-    coordinating: 37,
-    description:
-      "Протезування являє собою важливий етап процесу соціально-трудової реабілітації людини, яка втратила кінцівки, або страждає захворюваннями опорно-рухового апарату",
-    img: "https://res.cloudinary.com/ddem4litw/image/upload/v1694901927/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B0_1_1_wsh9y6.jpg",
-  },
-  {
-    id: 5,
-    title: "Програма 5",
-    difficulty: 17,
-    intensity: 54,
-    coordinating: 48,
-    description:
-      "Протезування являє собою важливий етап процесу соціально-трудової реабілітації людини, яка втратила кінцівки, або страждає захворюваннями опорно-рухового апарату",
-    img: "https://res.cloudinary.com/ddem4litw/image/upload/v1694901927/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B0_1_1_wsh9y6.jpg",
-  },
-];
+const ProgramsList = ({dataFitnessProgram, isLoadingFitnessProgram, getFitnessProgram }) => {
+  React.useEffect(()=> {
 
-const ProgramsList = () => {
+    if(!dataFitnessProgram.length) {
+      getFitnessProgram()
+    }
+
+  }, [])
   return (
     <Wrap>
       <List>
-        {data.map(
-          ({
-            id,
-            title,
-            difficulty,
-            intensity,
-            coordinating,
-            description,
-            img,
-          }) => (
-            <ListItem key={id}>
-              <Link to={`/programs/${id}`}>
+        {dataFitnessProgram.map((item, index)=>
+          (
+            <ListItem key={item.id}>
+              <Link to={`/programs/${item.id}`}>
+
                 <Program
-                  title={title}
-                  difficulty={difficulty}
-                  intensity={intensity}
-                  coordinating={coordinating}
-                  description={description}
-                  img={img}
+                  title={item.title}
+                  difficulty={item.complexity}
+                  intensity={item.intensity}
+                  coordinating={item.coordination}
+                  description={item.description}
+                  img={item.poster}
                 ></Program>
               </Link>
             </ListItem>
@@ -88,4 +38,16 @@ const ProgramsList = () => {
   );
 };
 
-export default ProgramsList;
+function mapStateToProps({fitnessProgram}) {
+  return {
+    dataFitnessProgram: fitnessProgram.list,
+    isLoadingFitnessProgram: fitnessProgram.isLoading,
+  };
+}
+
+const mapDispatchToProps = {
+  getFitnessProgram: getFitnessProgram,
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProgramsList);
