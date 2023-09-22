@@ -3,6 +3,7 @@ import { useLocation, useParams } from "react-router-dom";
 import AllProgramInfo from "../../Components/AllProgramInfo/AllProgramInfo";
 import ExerciceList from "../../Components/ExerciceList/ExerciceList";
 import ProgramTopPanel from "../../Components/ProgramTopPanel/ProgramTopPanel";
+import Container from "../../Components/ui/Container/Container.styled";
 
 const data = [
   {
@@ -193,13 +194,13 @@ const ProgramDetails = () => {
   const { exercices } = currentProgram;
 
   return (
-    <>
+    <Container>
       <ProgramTopPanel BackTo={backLinkHref} />
 
       <AllProgramInfo programInfo={currentProgram} />
 
       <ExerciceList exercices={exercices} />
-    </>
+    </Container>
   );
 };
 
