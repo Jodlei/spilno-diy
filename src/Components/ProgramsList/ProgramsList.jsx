@@ -21,14 +21,13 @@ const ProgramsList = () => {
               (
                   <ListItem key={item.id}>
                     <Link to={`/programs/${item.id}`}>
-
                       <Program
                           title={item.title}
-                          difficulty={item.complexity}
+                          difficulty={item.difficulty}
                           intensity={item.intensity}
-                          coordinating={item.coordination}
+                          coordinating={item.coordinating}
                           description={item.description}
-                          img={item.poster}
+                          img={item.img}
                       ></Program>
                     </Link>
                   </ListItem>

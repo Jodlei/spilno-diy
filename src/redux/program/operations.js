@@ -16,9 +16,9 @@ export const programs = createAsyncThunk(
 
 export const detailProgram = createAsyncThunk(
     "program/getDetailProgram",
-    async ( data) => {
+    async ( id) => {
 
-        const response = await getDetailProgram(data);
+        const response = await getDetailProgram(id);
         return response.data
     }
 );
