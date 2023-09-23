@@ -4,9 +4,9 @@ import {toast} from "react-toastify";
 import storage from "../../services/storage";
 
 const initialState = {
-    user: storage.get("userData") ? JSON.parse(storage.get("userData")) : {name: null, email: null},
-    token: storage.getToken() ? storage.getToken() : null,
-    isLoggedIn: storage.get("isLogged") ? storage.get("isLogged") : false,
+    user: {name: null, email: null},
+    token:  null,
+    isLoggedIn: false,
     isRefreshing: true,
     isLoading: false,
     isLoadingGoogle: false,
