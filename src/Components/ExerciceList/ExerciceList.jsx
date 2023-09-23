@@ -5,11 +5,11 @@ import { List } from "./ExerciceList.styled";
 const ExerciceList = ({ exercices }) => {
   return (
     <List>
-      {exercices.map(({ id, title, img, description, repetitionCount }) => (
+      {exercices.map(({ id, title, video, description, repetitionCount }) => (
         <ExerciceItem
           key={id}
           title={title}
-          img={img}
+          video={video}
           description={description}
           repetitionCount={repetitionCount}
         />

@@ -80,7 +80,7 @@ ul {
 a {
   text-decoration: none;
   color: currentColor;
-}  
+}
 /* 
 *::-webkit-scrollbar {
   width: 8px;
