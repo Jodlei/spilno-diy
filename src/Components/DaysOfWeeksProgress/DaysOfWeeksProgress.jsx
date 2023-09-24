@@ -1,18 +1,20 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { Wrap } from "./DaysOfWeeksProgress.styled";
 import "react-circular-progressbar/dist/styles.css";
+import {useDispatch} from "react-redux";
+import {useProgress} from "../../hooks/useProgress.jsx";
+import {useEffect} from "react";
+import {dayOfWeekProgress} from "../../redux/progress/operations.js";
 
-const daysWithProgress = [
-  { id: "1", day: "Пн", progress: 34 },
-  { id: "2", day: "Вт", progress: 1 },
-  { id: "3", day: "Ср", progress: 78 },
-  { id: "4", day: "Чт", progress: 0 },
-  { id: "5", day: "Пт", progress: 55 },
-  { id: "6", day: "Сб", progress: 35 },
-  { id: "7", day: "Нд", progress: 74 },
-];
+
 
 const DaysOfWeeksProgress = () => {
+  const dispatch = useDispatch();
+  const { daysWithProgress } = useProgress();
+  useEffect(() => {
+    dispatch(dayOfWeekProgress());
+  }, [dispatch]);
+
   return (
     <Wrap>
       {daysWithProgress.map(({ id, day, progress }) => (

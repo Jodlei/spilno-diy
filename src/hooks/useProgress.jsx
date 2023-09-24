@@ -2,17 +2,21 @@ import { useSelector } from "react-redux";
 
 import {
     selectCountExercises,
-    selectIsLoading, selectProgressAmount
+    selectDayOfWeekProgress,
+    selectIsLoading,
+    selectProgressAmount
 } from "../redux/progress/selectors";
 
 export const useProgress = () => {
     const isLoading = useSelector(selectIsLoading);
     const progressAmount = useSelector(selectProgressAmount);
     const countExercises = useSelector(selectCountExercises);
+    const daysWithProgress = useSelector(selectDayOfWeekProgress);
 
     return {
         isLoading,
         progressAmount,
-        countExercises
+        countExercises,
+        daysWithProgress
     };
 };

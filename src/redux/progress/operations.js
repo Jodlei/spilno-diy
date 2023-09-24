@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
     setProgressReq,
-    getCurrentProgressReq
+    getCurrentProgressReq,
+    getDayOfWeekProgressReq
 } from "../../api/progress.js";
 
 
@@ -24,4 +25,13 @@ export const currentProgress = createAsyncThunk(
     }
 );
 
+
+export const dayOfWeekProgress = createAsyncThunk(
+    "progress/get-day-of-week",
+    async () => {
+
+        const response = await getDayOfWeekProgressReq();
+        return response.data
+    }
+);
 
