@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-    setProgressReq
+    setProgressReq,
+    getCurrentProgressReq
 } from "../../api/progress.js";
 
 
@@ -12,3 +13,15 @@ export const setProgress = createAsyncThunk(
         return response.data
     }
 );
+
+
+export const currentProgress = createAsyncThunk(
+    "progress/get-current",
+    async () => {
+
+        const response = await getCurrentProgressReq();
+        return response.data
+    }
+);
+
+
