@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import ExerciceItem from "./ExersciceItem/ExersciceItem";
 import { List } from "./ExerciceList.styled";
 
-const ExerciceList = ({ exercices }) => {
+const ExerciceList = ({ exercices, programId }) => {
   return (
     <List>
       {exercices.map(({ id, title, video, description, repetitionCount }) => (
@@ -12,6 +12,8 @@ const ExerciceList = ({ exercices }) => {
           video={video}
           description={description}
           repetitionCount={repetitionCount}
+          programId={programId}
+          exerciceId={id}
         />
       ))}
     </List>
@@ -20,6 +22,7 @@ const ExerciceList = ({ exercices }) => {
 
 ExerciceList.propTypes = {
   exercices: PropTypes.array.isRequired,
+  programId: PropTypes.string.isRequired,
 };
 
 export default ExerciceList;
