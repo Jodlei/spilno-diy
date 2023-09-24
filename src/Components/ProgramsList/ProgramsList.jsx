@@ -1,40 +1,38 @@
 import Program from "../Program/Program";
 import { Link } from "react-router-dom";
 import { Wrap, List, ListItem } from "./ProgramsList.styled";
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { programs } from "../../redux/program/operations.js";
-import {useProgram} from "../../hooks/useProgram.jsx";
+import { useProgram } from "../../hooks/useProgram.jsx";
 
 const ProgramsList = () => {
   const dispatch = useDispatch();
-  const { isLoading, listProgram } = useProgram();
+  const { listProgram } = useProgram();
   useEffect(() => {
-    if(listProgram.length === 0) {
+    if (listProgram.length === 0) {
       dispatch(programs());
     }
-  }, [dispatch]);
+  }, [dispatch, listProgram.length]);
   return (
-      <Wrap>
-        <List>
-          {listProgram.map((item, index)=>
-              (
-                  <ListItem key={item.id}>
-                    <Link to={`/programs/${item.id}`}>
-                      <Program
-                          title={item.title}
-                          difficulty={item.difficulty}
-                          intensity={item.intensity}
-                          coordinating={item.coordinating}
-                          description={item.description}
-                          img={item.img}
-                      ></Program>
-                    </Link>
-                  </ListItem>
-              )
-          )}
-        </List>
-      </Wrap>
+    <Wrap>
+      <List>
+        {listProgram.map((item) => (
+          <ListItem key={item.id}>
+            <Link to={`/programs/${item.id}`}>
+              <Program
+                title={item.title}
+                difficulty={item.difficulty}
+                intensity={item.intensity}
+                coordinating={item.coordinating}
+                description={item.description}
+                img={item.img}
+              ></Program>
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+    </Wrap>
   );
 };
 
