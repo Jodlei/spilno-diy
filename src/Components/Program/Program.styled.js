@@ -16,7 +16,8 @@ export const Title = styled.h3`
 `;
 
 export const Image = styled.img`
-  max-width: 100%;
+  /* max-width: 100%; */
+  width: 250px;
   height: 162px;
   border-radius: 8px;
 `;
@@ -39,5 +40,6 @@ export const ProgressDescriptionWrap = styled.div`
 `;
 export const ProgressDescriptionImageWrap = styled.div`
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
+  flex-direction: column;
 `;

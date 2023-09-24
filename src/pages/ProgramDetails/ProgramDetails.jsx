@@ -27,7 +27,7 @@ const ProgramDetails = () => {
 
       <AllProgramInfo programInfo={programDetails} />
 
-      <ExerciceList exercices={exercises} />
+      <ExerciceList exercices={exercises} programId={id} />
     </Container>
   );
 };
