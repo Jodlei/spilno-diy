@@ -23,17 +23,16 @@ import {
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  const { isLoading, status } = useAuth();
-  const [data, setData] = useState();
+  const { isLoading } = useAuth();
+  // const [data, setData] = useState();
 
-  useEffect(() => {
-    if (status) {
-      dispatch(login(data));
-    }
-  }, [status, dispatch, data]);
+  // useEffect(() => {
+  //   if (status) {
+  //     dispatch(login(data));
+  //   }
+  // }, [status, dispatch, data]);
 
   const initialValues = {
-    name: "",
     email: "",
     password: "",
   };
@@ -53,7 +52,7 @@ const SignUp = () => {
           validationSchema={SignUpSchema}
           onSubmit={(credentials) => {
             handleRegister(credentials);
-            setData(credentials);
+            // setData(credentials);
           }}
         >
           {({ errors, touched }) => {

@@ -22,16 +22,13 @@ const Program = ({
     <Wrap>
       <Title>{title}</Title>
       <ProgressDescriptionImageWrap>
-        <ProgressDescriptionWrap>
-          <LinearProgressBar
-            difficulty={difficulty}
-            intensity={intensity}
-            coordinating={coordinating}
-          ></LinearProgressBar>
-          <Description>{description}</Description>
-        </ProgressDescriptionWrap>
-
         <Image src={`${img}`}></Image>
+        <LinearProgressBar
+          difficulty={difficulty}
+          intensity={intensity}
+          coordinating={coordinating}
+        ></LinearProgressBar>
+        <Description>{description}</Description>
       </ProgressDescriptionImageWrap>
     </Wrap>
   );

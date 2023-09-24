@@ -12,12 +12,7 @@ export const SignUpSchema = Yup.object().shape({
     .trim()
     .required("Будь-ласка введіть пароль")
     .min(6, "Пароль надто короткий")
-    .max(16, "Пароль не може бути довшим за 16 символів")
-    .test(
-      "password",
-      "Пароль недостатньо надійний. Додайте велику літеру.",
-      (value) => /^(?=.*[a-z])(?=.*[A-Z]).+$/.test(value || "")
-    ),
+    .max(16, "Пароль не може бути довшим за 16 символів"),
 });
 
 export const LoginSchema = Yup.object().shape({
