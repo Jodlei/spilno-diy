@@ -9,6 +9,7 @@ import { useProgram } from "../../hooks/useProgram.jsx";
 const ProgramsList = () => {
   const dispatch = useDispatch();
   const { listProgram } = useProgram();
+
   useEffect(() => {
     if (listProgram.length === 0) {
       dispatch(programs());

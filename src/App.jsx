@@ -2,10 +2,11 @@ import { ThemeProvider } from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import { GlobalStyle } from "./Components/GlobalStyle/GlobalStyle";
 import { theme } from "./theme/theme";
-
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { refreshUser } from "./redux/auth/operations";
+import { useAuth } from "./hooks/useAuth";
+// import { useProgram } from "./hooks/useProgram";
 
 import Programs from "./pages/Programs/Programs";
 import ProgramDetail from "./pages/ProgramDetails/ProgramDetails";
@@ -16,15 +17,22 @@ import AuthNavPage from "./pages/AuthNavPage/AuthNavPage";
 import PrivateRoute from "./Components/routes/PrivateRoute";
 import RestrictedRoute from "./Components/routes/RestrictedRoute";
 import Toast from "./Components/ui/Toast/Toast";
+import Loader from "./Components/ui/Loader/Loader";
 
 function App() {
   const dispatch = useDispatch();
+
+  const { isRefreshing } = useAuth();
+
+  // const { isLoading } = useProgram();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
 
