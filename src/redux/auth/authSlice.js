@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, logOut, refreshUser, register } from "./operations";
+import {
+  login,
+  logOut,
+  refreshUser,
+  register,
+  sendConfirmEmail,
+} from "./operations";
 import { toast } from "react-toastify";
 import storage from "../../services/storage";
 
@@ -24,7 +30,7 @@ export const authSlice = createSlice({
       .addCase(register.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(register.fulfilled, (state) => {
         state.status = true;
         state.isLoading = false;
         notify("Будь-ласка підтвердіть електронну пошту");
@@ -93,7 +99,20 @@ export const authSlice = createSlice({
         storage.removeItem("userData");
         storage.removeItem("isLogged");
       })
+      .addCase(sendConfirmEmail.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(sendConfirmEmail.fulfilled, (state, action) => {
+        console.log(action.payload);
 
+        state.token = action.payload;
+        state.isLoading = false;
+        state.isLoggedIn = true;
+      })
+      .addCase(sendConfirmEmail.rejected, (state, action) => {
+        error(action.payload);
+        state.isLoading = false;
+      })
       .addDefaultCase((state, action) => {
         if (action.error) {
           if (action.payload === "Not authorized") {

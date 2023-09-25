@@ -6,7 +6,6 @@ import {
   Title,
   Image,
   Description,
-  ProgressDescriptionWrap,
   ProgressDescriptionImageWrap,
 } from "./Program.styled";
 

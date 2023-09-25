@@ -15,7 +15,7 @@ export const instance = axios.create({
   baseURL: "https://spilno-diy-back.itbox.com.ua",
 });
 
-const setToken = (token) => {
+export const setToken = (token) => {
   if (token) {
     return (instance.defaults.headers.authorization = `Bearer ${token}`);
   }
@@ -75,11 +75,32 @@ export const sendSocialLogin = createAsyncThunk(
   }
 );
 
+// export const sendConfirmEmail = createAsyncThunk(
+//   "auth/confirmEmail",
+//   async (data) => {
+//     const response = await confirmEmail(data);
+//     return response.data;
+//   }
+// );
+
 export const sendConfirmEmail = createAsyncThunk(
   "auth/confirmEmail",
-  async (data) => {
-    const response = await confirmEmail(data);
-    return response.data;
+  async (credentials, thunkAPI) => {
+    // console.log(credentials.token);
+
+    try {
+      if (!credentials.token) {
+        return thunkAPI.rejectWithValue("token missing");
+      }
+
+      console.log(credentials.token);
+
+      await instance.put("api/v1/auth/confirm-email", credentials);
+
+      return credentials.token;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response.data.message);
+    }
   }
 );
 

@@ -18,6 +18,7 @@ import PrivateRoute from "./Components/routes/PrivateRoute";
 import RestrictedRoute from "./Components/routes/RestrictedRoute";
 import Toast from "./Components/ui/Toast/Toast";
 import Loader from "./Components/ui/Loader/Loader";
+import ConfirmEmailRedirect from "./pages/ConfirmEmailRedirect/ConfirmEmailRedirect";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +56,16 @@ function App() {
           path="/login"
           element={
             <RestrictedRoute component={<LoginPage />} redirectTo="/main" />
+          }
+        />
+
+        <Route
+          path="/signup/verify-email"
+          element={
+            <RestrictedRoute
+              component={<ConfirmEmailRedirect />}
+              redirectTo="/main"
+            />
           }
         />
 

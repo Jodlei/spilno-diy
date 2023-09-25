@@ -1,37 +1,35 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-    setProgressReq,
-    getCurrentProgressReq,
-    getDayOfWeekProgressReq
+  setProgressReq,
+  getCurrentProgressReq,
+  getDayOfWeekProgressReq,
 } from "../../api/progress.js";
-
+import { getToken } from "../progress/selectors";
 
 export const setProgress = createAsyncThunk(
-    "progress/set",
-    async (data) => {
-
-        const response = await setProgressReq(data);
-        return response.data
-    }
+  "progress/set",
+  async (data, thunkApi) => {
+    const response = await setProgressReq(data);
+    return response.data;
+  }
 );
-
 
 export const currentProgress = createAsyncThunk(
-    "progress/get-current",
-    async () => {
+  "progress/get-current",
+  async (_, thunkApi) => {
+    const { getState } = thunkApi;
 
-        const response = await getCurrentProgressReq();
-        return response.data
-    }
+    const token = getToken(getState());
+
+    const response = await getCurrentProgressReq(token);
+    return response.data;
+  }
 );
-
 
 export const dayOfWeekProgress = createAsyncThunk(
-    "progress/get-day-of-week",
-    async () => {
-
-        const response = await getDayOfWeekProgressReq();
-        return response.data
-    }
+  "progress/get-day-of-week",
+  async () => {
+    const response = await getDayOfWeekProgressReq();
+    return response.data;
+  }
 );
-
