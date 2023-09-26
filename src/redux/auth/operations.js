@@ -1,13 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   authorize,
-  getAuthUser,
   registerUser,
   resetPassword,
   logout,
   getSocialRedirectUrl,
   socialLogin,
-  confirmEmail,
 } from "../../api/auth";
 import axios from "axios";
 
@@ -29,9 +27,7 @@ export const register = createAsyncThunk("auth/register", async (data) => {
 
 export const login = createAsyncThunk("auth/login", async (data) => {
   const response = await authorize(data);
-
   setToken(response.data.token);
-
   return response.data;
 });
 
@@ -62,11 +58,6 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-// export const refreshUser = createAsyncThunk("auth/auth_user", async () => {
-//   const response = await getAuthUser();
-//   return response.data;
-// });
-
 export const sendSocialLogin = createAsyncThunk(
   "auth/socialLogin",
   async (data) => {
@@ -75,31 +66,21 @@ export const sendSocialLogin = createAsyncThunk(
   }
 );
 
-// export const sendConfirmEmail = createAsyncThunk(
-//   "auth/confirmEmail",
-//   async (data) => {
-//     const response = await confirmEmail(data);
-//     return response.data;
-//   }
-// );
-
 export const sendConfirmEmail = createAsyncThunk(
   "auth/confirmEmail",
   async (credentials, thunkAPI) => {
-    // console.log(credentials.token);
-
     try {
       if (!credentials.token) {
         return thunkAPI.rejectWithValue("token missing");
       }
 
-      console.log(credentials.token);
-
       await instance.put("api/v1/auth/confirm-email", credentials);
-
       return credentials.token;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response.data.message);
+      return thunkAPI.rejectWithValue({
+        error: err.response.data.message,
+        token: credentials.token,
+      });
     }
   }
 );

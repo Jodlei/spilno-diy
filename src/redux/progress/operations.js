@@ -4,24 +4,21 @@ import {
   getCurrentProgressReq,
   getDayOfWeekProgressReq,
 } from "../../api/progress.js";
-import { getToken } from "../progress/selectors";
+// import { getToken } from "../progress/selectors";
 
-export const setProgress = createAsyncThunk(
-  "progress/set",
-  async (data, thunkApi) => {
-    const response = await setProgressReq(data);
-    return response.data;
-  }
-);
+export const setProgress = createAsyncThunk("progress/set", async (data) => {
+  const response = await setProgressReq(data);
+  return response.data;
+});
 
 export const currentProgress = createAsyncThunk(
   "progress/get-current",
   async (_, thunkApi) => {
-    const { getState } = thunkApi;
+    // const { getState } = thunkApi;
 
-    const token = getToken(getState());
+    // const token = getToken(getState());
 
-    const response = await getCurrentProgressReq(token);
+    const response = await getCurrentProgressReq();
     return response.data;
   }
 );
