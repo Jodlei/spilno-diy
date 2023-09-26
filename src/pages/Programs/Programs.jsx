@@ -3,6 +3,7 @@ import DaysOfWeeksProgress from "../../Components/DaysOfWeeksProgress/DaysOfWeek
 import AllActivity from "../../Components/AllActivity/AllActivity";
 import ProgramsList from "../../Components/ProgramsList/ProgramsList";
 import Container from "../../Components/ui/Container/Container.styled";
+import {Link} from "../../Components/ui/Link/Link.styled";
 const Programs = () => {
   return (
     <Container>
@@ -13,6 +14,8 @@ const Programs = () => {
       <AllActivity />
 
       <ProgramsList />
+
+        <Link to={"/psychological-support"}>Психологічна допомога</Link>
     </Container>
   );
 };

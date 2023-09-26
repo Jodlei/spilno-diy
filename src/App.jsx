@@ -19,6 +19,7 @@ import RestrictedRoute from "./Components/routes/RestrictedRoute";
 import Toast from "./Components/ui/Toast/Toast";
 import Loader from "./Components/ui/Loader/Loader";
 import ConfirmEmailRedirect from "./pages/ConfirmEmailRedirect/ConfirmEmailRedirect";
+import PsychologicalSupportPage from "./pages/PsychologicalSupport/PsychologicalSupportPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -85,6 +86,11 @@ function App() {
           path="/activities"
           element={<PrivateRoute component={<Activities />} redirectTo="/" />}
         ></Route>
+
+          <Route
+              path="/psychological-support"
+              element={<PrivateRoute component={<PsychologicalSupportPage />} redirectTo="/" />}
+          ></Route>
 
         {/* <Route path="/main" element={<Programs />} />
         <Route path="/programs/:id" element={<ProgramDetail />} />
