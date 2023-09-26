@@ -38,11 +38,11 @@ const AllActivity = () => {
       </CircleProgressWrap>
 
       <ActivityWrap>
-        <Link to={`/activities`}>
+
           <ActivityTitle>Активність</ActivityTitle>
 
           <NumberOfExercises>{countExercises} вправи</NumberOfExercises>
-        </Link>
+
       </ActivityWrap>
     </Wrap>
   );

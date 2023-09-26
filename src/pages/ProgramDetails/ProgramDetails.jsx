@@ -7,6 +7,7 @@ import { useProgram } from "../../hooks/useProgram.jsx";
 import { useEffect } from "react";
 import { detailProgram } from "../../redux/program/operations.js";
 import { useDispatch } from "react-redux";
+import AllActivity from "../../Components/AllActivity/AllActivity.jsx";
 
 const ProgramDetails = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const ProgramDetails = () => {
   return (
     <Container>
       <ProgramTopPanel BackTo={backLinkHref} />
+        <AllActivity />
 
       <AllProgramInfo programInfo={programDetails} />
 

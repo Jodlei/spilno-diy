@@ -4,7 +4,6 @@ import Modal from "../ui/Modal/Modal";
 import { List } from "./ExerciceList.styled";
 import { useState } from "react";
 import NoticeOfCompletion from "../NoticeOfCompletion/NoticeOfCompletion";
-import { useNavigate } from "react-router-dom";
 
 const ExerciceList = ({ exercices, programId }) => {
   const [congratulationsModal, setCongratulationsModal] = useState(false);
