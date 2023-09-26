@@ -17,7 +17,6 @@ class Storage {
   }
 
   getToken() {
-    console.log(tokenKeyName);
     return this.get(tokenKeyName);
   }
 

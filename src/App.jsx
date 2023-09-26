@@ -85,10 +85,6 @@ function App() {
           path="/activities"
           element={<PrivateRoute component={<Activities />} redirectTo="/" />}
         ></Route>
-
-        {/* <Route path="/main" element={<Programs />} />
-        <Route path="/programs/:id" element={<ProgramDetail />} />
-        <Route path={"activities"} element={<Activities />} /> */}
       </Routes>
 
       <Toast />

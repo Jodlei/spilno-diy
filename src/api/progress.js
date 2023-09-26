@@ -3,8 +3,8 @@ import config from "../config";
 
 const setProgressReq = (data) =>
   requestService.create(`${config.getApiAuthUrl()}/set-progress`, data);
-const getCurrentProgressReq = (token) =>
-  requestService.get(`${config.getApiAuthUrl()}/get-current-progress`, token);
+const getCurrentProgressReq = () =>
+  requestService.get(`${config.getApiAuthUrl()}/get-current-progress`);
 const getDayOfWeekProgressReq = () =>
   requestService.get(`${config.getApiAuthUrl()}/get-progress-week`);
 

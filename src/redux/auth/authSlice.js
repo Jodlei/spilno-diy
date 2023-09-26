@@ -19,7 +19,7 @@ const initialState = {
 };
 
 const notify = (text) => toast(`${text}`);
-const error = (text) => toast.error(`${text}`);
+// const error = (text) => toast.error(`${text}`);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -36,7 +36,7 @@ export const authSlice = createSlice({
         notify("Будь-ласка підтвердіть електронну пошту");
       })
       .addCase(register.rejected, (state, action) => {
-        error(action.payload);
+        // error(action.payload);
         state.isLoading = false;
       })
       .addCase(login.pending, (state) => {
@@ -46,16 +46,13 @@ export const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-
-        //прибрати
         storage.setToken(state.token);
-
         state.isLoggedIn = true;
         state.isLoading = false;
         state.status = false;
       })
       .addCase(login.rejected, (state, action) => {
-        error(action.payload);
+        // error(action.payload);
         state.isLoading = false;
         state.status = false;
       })
@@ -64,16 +61,13 @@ export const authSlice = createSlice({
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload.data;
-
         state.isLoggedIn = true;
         state.isRefreshing = false;
-
         storage.set("userData", JSON.stringify(state.user));
         storage.set("isLogged", state.isLoggedIn);
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
-
         storage.removeItem("userData");
         storage.removeItem("isLogged");
       })
@@ -103,14 +97,18 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(sendConfirmEmail.fulfilled, (state, action) => {
-        console.log(action.payload);
-
         state.token = action.payload;
+        storage.setToken(action.payload.token);
         state.isLoading = false;
         state.isLoggedIn = true;
       })
       .addCase(sendConfirmEmail.rejected, (state, action) => {
-        error(action.payload);
+        if (action.payload.error === "This account has already activated") {
+          notify("Ця електронна пошта вже підтверджена");
+          state.token = action.payload.token;
+          storage.setToken(action.payload.token);
+          state.isLoggedIn = true;
+        }
         state.isLoading = false;
       })
       .addDefaultCase((state, action) => {
@@ -120,7 +118,7 @@ export const authSlice = createSlice({
             state.token = null;
           }
           state.error = action.payload;
-          error(action.payload);
+          // error(action.payload);
         }
       }),
 });
