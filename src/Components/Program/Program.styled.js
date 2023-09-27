@@ -12,25 +12,20 @@ export const Title = styled.h3`
   font-size: 36px;
   font-weight: 400;
   letter-spacing: -0.54px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
 export const Image = styled.img`
-  /* max-width: 100%; */
-  width: 250px;
-  height: 162px;
+  max-width: 100%;
   border-radius: 8px;
+  margin-bottom: 10px;
 `;
 
 export const Description = styled.p`
-  font-size: 13px;
-  font-style: normal;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.2;
-  letter-spacing: -0.195px;
-  font-family: Roboto;
-  margin-top: 5px;
-  margin-right: 10px;
+  margin-top: 10px;
   max-width: 100%;
 `;
 
@@ -40,6 +35,6 @@ export const ProgressDescriptionWrap = styled.div`
 `;
 export const ProgressDescriptionImageWrap = styled.div`
   display: flex;
-  /* flex-direction: row; */
   flex-direction: column;
+  align-items: center;
 `;

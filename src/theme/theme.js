@@ -1,13 +1,14 @@
 export const theme = {
   colors: {
     secondaryText: "#FAFAFA",
-    mainBackground: "rgba(255, 255, 255, 1)", //білий background
+    mainBackground: "rgba(255, 255, 255, 1)", //білий
     mainText: "rgba(0, 0, 0, 1)", //чорний
-    titleText: "rgba(0, 0, 0, 1)", // заголовки h1
+    titleText: "rgba(0, 0, 0, 1)", // чорний
 
     accentColor: "rgba(0, 0, 0, 1)",
-
+    cardsBgColor: "#f0f0f0",
     seconButtonBgColor: "rgba(0, 0, 0, 1)",
+
     inputErrorColor: "#E74A3B",
     inputNotSecureColor: "#F6C23E",
     inputSuccessColor: "#3CBC81",

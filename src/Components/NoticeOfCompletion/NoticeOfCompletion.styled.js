@@ -13,7 +13,7 @@ export const Wrap = styled.div`
   height: 558px;
   background-color: ${(p) => p.theme.colors.mainBackground};
   border-radius: 10px;
-  box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   padding-top: 16px;
   padding-left: 16px;
   padding-right: 16px;
@@ -45,6 +45,7 @@ export const TextBold = styled.b`
 
 export const Button = styled.button`
   display: flex;
+  justify-content: center;
   width: 178px;
   height: 51px;
   padding: 14px 26px;
