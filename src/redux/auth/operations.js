@@ -20,15 +20,26 @@ export const setToken = (token) => {
   instance.defaults.headers.authorization = "";
 };
 
-export const register = createAsyncThunk("auth/register", async (data) => {
-  const response = await registerUser(data);
-  return response.data;
-});
+export const register = createAsyncThunk(
+  "auth/register",
+  async (data, thunkAPI) => {
+    try {
+      const response = await registerUser(data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
 
-export const login = createAsyncThunk("auth/login", async (data) => {
-  const response = await authorize(data);
-  setToken(response.data.token);
-  return response.data;
+export const login = createAsyncThunk("auth/login", async (data, thunkAPI) => {
+  try {
+    const response = await authorize(data);
+    setToken(response.data.token);
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data.message);
+  }
 });
 
 export const resetPasswordSend = createAsyncThunk(
@@ -85,7 +96,7 @@ export const sendConfirmEmail = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk("auth/logout", async (data) => {
+export const logOut = createAsyncThunk("auth/logout", async () => {
   const response = await logout();
   return response.data;
 });

@@ -13,11 +13,11 @@ export const Wrap = styled.div`
   height: 558px;
   background-color: ${(p) => p.theme.colors.mainBackground};
   border-radius: 10px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 1px 0px 2px 2px rgba(0, 0, 0, 0.25);
   padding-top: 16px;
   padding-left: 16px;
   padding-right: 16px;
-  padding-bottom: 77px;
+  padding-bottom: 50px;
 `;
 export const Image = styled.img`
   width: 122px;
@@ -55,4 +55,15 @@ export const Button = styled.button`
   border: 0px;
   background-color: ${(p) => p.theme.colors.seconButtonBgColor};
   color: ${(p) => p.theme.colors.secondaryText};
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  color: ${(p) => p.theme.colors.mainText};
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  border: 0;
+  top: 15px;
+  left: 15px;
 `;

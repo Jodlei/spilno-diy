@@ -7,25 +7,26 @@ import {
 } from "./AllActivity.styled";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { Link } from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
-import {currentProgress} from "../../redux/progress/operations.js";
-import {useProgress} from "../../hooks/useProgress.jsx";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { currentProgress } from "../../redux/progress/operations.js";
+import { useProgress } from "../../hooks/useProgress.jsx";
 
 const AllActivity = () => {
-    const dispatch = useDispatch();
-    const { countExercises, progressAmount, isLoading } = useProgress();
-    useEffect(() => {
-            dispatch(currentProgress());
-    }, [dispatch]);
+  const dispatch = useDispatch();
+  const { countExercises, progressAmount } = useProgress();
+  useEffect(() => {
+    dispatch(currentProgress());
+  }, [dispatch]);
+
+  const normilizedProgressAmount = Math.round(progressAmount);
 
   return (
     <Wrap>
       <CircleProgressWrap>
         <CircularProgressbar
           value={progressAmount}
-          text={`${progressAmount}%`}
+          text={`${normilizedProgressAmount}%`}
           strokeWidth={15}
           styles={buildStyles({
             textSize: "15px",
@@ -38,11 +39,9 @@ const AllActivity = () => {
       </CircleProgressWrap>
 
       <ActivityWrap>
+        <ActivityTitle>Активність</ActivityTitle>
 
-          <ActivityTitle>Активність</ActivityTitle>
-
-          <NumberOfExercises>{countExercises} вправи</NumberOfExercises>
-
+        <NumberOfExercises>{countExercises} вправи</NumberOfExercises>
       </ActivityWrap>
     </Wrap>
   );

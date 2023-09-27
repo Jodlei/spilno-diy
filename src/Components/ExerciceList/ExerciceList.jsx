@@ -7,11 +7,10 @@ import NoticeOfCompletion from "../NoticeOfCompletion/NoticeOfCompletion";
 
 const ExerciceList = ({ exercices, programId }) => {
   const [congratulationsModal, setCongratulationsModal] = useState(false);
-  const [noticeId, setNoticeId] = useState(null);
 
-  const toggleCongratulationsModal = (id) => {
+  const toggleCongratulationsModal = () => {
+    console.log(1);
     setCongratulationsModal(!congratulationsModal);
-    setNoticeId(id);
   };
 
   return (
@@ -34,7 +33,7 @@ const ExerciceList = ({ exercices, programId }) => {
 
       {congratulationsModal && (
         <Modal toggleModal={toggleCongratulationsModal}>
-          <NoticeOfCompletion id={noticeId} />
+          <NoticeOfCompletion toggleModal={toggleCongratulationsModal} />
         </Modal>
       )}
     </>

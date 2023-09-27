@@ -19,7 +19,7 @@ const initialState = {
 };
 
 const notify = (text) => toast(`${text}`);
-// const error = (text) => toast.error(`${text}`);
+const error = (text) => toast.error(`${text}`);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -36,7 +36,7 @@ export const authSlice = createSlice({
         notify("Будь-ласка підтвердіть електронну пошту");
       })
       .addCase(register.rejected, (state, action) => {
-        // error(action.payload);
+        error(action.payload);
         state.isLoading = false;
       })
       .addCase(login.pending, (state) => {
@@ -52,9 +52,9 @@ export const authSlice = createSlice({
         state.status = false;
       })
       .addCase(login.rejected, (state, action) => {
-        // error(action.payload);
         state.isLoading = false;
         state.status = false;
+        error(action.payload);
       })
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;

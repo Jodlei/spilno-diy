@@ -13,7 +13,7 @@ const LinearBarComponent = ({ percent, colorGradient }) => {
         <FillingProgressBar
           style={{
             left: percent - 100 + "%",
-            transition: "3s",
+            transition: "1s",
             backgroundImage: colorGradient,
           }}
         />
@@ -24,7 +24,7 @@ const LinearBarComponent = ({ percent, colorGradient }) => {
 
 LinearBarComponent.propTypes = {
   percent: PropTypes.number.isRequired,
-  colorGradient: PropTypes.object.isRequired,
+  colorGradient: PropTypes.string.isRequired,
 };
 
 export default LinearBarComponent;
