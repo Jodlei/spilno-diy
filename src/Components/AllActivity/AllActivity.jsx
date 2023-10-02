@@ -1,5 +1,6 @@
 import {
   Wrap,
+  ActivityLink,
   ActivityWrap,
   CircleProgressWrap,
   NumberOfExercises,
@@ -15,6 +16,7 @@ import { useProgress } from "../../hooks/useProgress.jsx";
 const AllActivity = () => {
   const dispatch = useDispatch();
   const { countExercises, progressAmount } = useProgress();
+
   useEffect(() => {
     dispatch(currentProgress());
   }, [dispatch]);
@@ -22,28 +24,30 @@ const AllActivity = () => {
   const normilizedProgressAmount = Math.round(progressAmount);
 
   return (
-    <Wrap>
-      <CircleProgressWrap>
-        <CircularProgressbar
-          value={progressAmount}
-          text={`${normilizedProgressAmount}%`}
-          strokeWidth={15}
-          styles={buildStyles({
-            textSize: "15px",
-            pathColor: `rgba(86, 217, 138, 1)`,
-            textColor: `#101828`,
-            trailColor: `rgba(214, 241, 225, 1)`,
-            backgroundColor: `rgba(86, 217, 193, 1)`,
-          })}
-        />
-      </CircleProgressWrap>
+    <ActivityLink to={`/activities`}>
+      <Wrap>
+        <CircleProgressWrap>
+          <CircularProgressbar
+            value={progressAmount}
+            text={`${normilizedProgressAmount}%`}
+            strokeWidth={15}
+            styles={buildStyles({
+              textSize: "15px",
+              pathColor: `rgba(86, 217, 138, 1)`,
+              textColor: `#101828`,
+              trailColor: `rgba(214, 241, 225, 1)`,
+              backgroundColor: `rgba(86, 217, 193, 1)`,
+            })}
+          />
+        </CircleProgressWrap>
 
-      <ActivityWrap>
-        <ActivityTitle>Активність</ActivityTitle>
+        <ActivityWrap>
+          <ActivityTitle>Активність</ActivityTitle>
 
-        <NumberOfExercises>{countExercises} вправи</NumberOfExercises>
-      </ActivityWrap>
-    </Wrap>
+          <NumberOfExercises>{countExercises} вправи</NumberOfExercises>
+        </ActivityWrap>
+      </Wrap>
+    </ActivityLink>
   );
 };
 

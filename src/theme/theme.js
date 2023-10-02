@@ -5,9 +5,9 @@ export const theme = {
     mainText: "rgba(0, 0, 0, 1)", //чорний
     titleText: "rgba(0, 0, 0, 1)", // чорний
 
-    accentColor: "rgba(0, 0, 0, 1)",
+    accentColor: "rgba(0, 0, 0, 1)", // чорний
     cardsBgColor: "#f0f0f0",
-    seconButtonBgColor: "rgba(0, 0, 0, 1)",
+    seconButtonBgColor: "rgba(0, 0, 0, 1)", // чорний
 
     inputErrorColor: "#E74A3B",
     inputNotSecureColor: "#F6C23E",

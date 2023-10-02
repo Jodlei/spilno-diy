@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const Wrap = styled.div`
   width: 100%;
@@ -11,6 +12,14 @@ export const Wrap = styled.div`
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 30px;
+`;
+
+export const ActivityLink = styled(NavLink)`
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.3px;
 `;
 
 export const ActivityWrap = styled.div`

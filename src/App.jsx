@@ -10,7 +10,7 @@ import { useAuth } from "./hooks/useAuth";
 
 import Programs from "./pages/Programs/Programs";
 import ProgramDetail from "./pages/ProgramDetails/ProgramDetails";
-import Activities from "./pages/Activities/Activities";
+import Activities from "./pages/Activities/ActivitiesPage";
 import SignUp from ".//pages/SignUp/SignUp";
 import LoginPage from "./pages/Login/LoginPage";
 import AuthNavPage from "./pages/AuthNavPage/AuthNavPage";
