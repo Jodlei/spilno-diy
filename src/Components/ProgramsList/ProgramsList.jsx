@@ -1,6 +1,6 @@
 import Program from "../Program/Program";
 import { Link } from "react-router-dom";
-import { Wrap, List, ListItem } from "./ProgramsList.styled";
+import { Wrap, List, ListItem, Title } from "./ProgramsList.styled";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { programs } from "../../redux/program/operations.js";
@@ -17,6 +17,7 @@ const ProgramsList = () => {
   }, [dispatch, listProgram.length]);
   return (
     <Wrap>
+      <Title>Реабілітаційні програми</Title>
       <List>
         {listProgram.map((item) => (
           <ListItem key={item.id}>

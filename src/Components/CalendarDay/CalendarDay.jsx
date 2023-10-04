@@ -7,7 +7,7 @@ const CalendarDay = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentDate(new Date());
-    }, 3600000); // 1 час = 3600000 миллисекунд
+    }, 3600000);
 
     return () => clearInterval(intervalId);
   }, []);
